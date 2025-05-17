@@ -1,192 +1,235 @@
-# 💬 MERN ChatApp (ChatChamp)
 
-A full‑stack, real‑time anonymous chat application built with the MERN stack (MongoDB, Express.js, React.js, Node.js). It integrates Socket.IO for live messaging, JWT for secure authentication, Cloudinary for media uploads, Nodemailer for email notifications, and Google’s Generative AI SDK for AI‑driven features. Enjoy a responsive Material‑UI frontend with Redux state management and a powerful Express‑based backend with admin and social APIs. 💬🔒🤖
+# 💬 ChatChamp - MERN Chat Application
 
-**👨‍💻 Developer:** [Aman Kumar](https://www.linkedin.com/in/amank736836)  
-**📝 Feedback:** [chatchamp.vercel.app/u/amank736836](https://chatchamp.vercel.app/u/amank736836)  
-**🔗 Live Demo:** [chatchamp.vercel.app](https://chatchamp.vercel.app)  
-**🧑‍💻 Frontend Repo:** [github.com/amank736836/MERN-ChatApp-Frontend](https://github.com/amank736836/MERN-ChatApp-Frontend)  
-**🧑‍💻 Backend Repo:** [github.com/amank736836/MERN-ChatApp-Backend](https://github.com/amank736836/MERN-ChatApp-Backend)
+Welcome to **ChatChamp**, a real-time chat application built with the MERN stack (MongoDB, Express.js, React.js, Node.js) and Socket.IO for instant communication. It offers features like user authentication, one-to-one and group chats, real-time messaging, and more.
 
 ---
 
-## 🚀 Core Features
+## 🌐 Live Demo
 
-- **💬 Anonymous & Authenticated Chat** – Public/private rooms powered by Socket.IO
-- **🔒 Secure Auth** – JWT login/signup, bcrypt hashing, HTTP-only cookies
-- **🤖 AI Replies** – Smart message suggestions via Google Generative AI SDK
-- **📁 Media Sharing** – File/image upload with Multer & Cloudinary
-- **📧 Email Alerts** – Notifications and invitations via Nodemailer
-- **👥 Social** – Friend requests, notifications, password recovery
-- **👑 Admin Panel** – Stats, user/chat/message management
-- **📱 Responsive UI** – Material‑UI + Framer Motion animations
-- **🛠️ State Management** – Redux Toolkit on the frontend
+👉 [chatchamp.vercel.app](https://chatchamp.vercel.app)
+
+---
+
+## 👨‍💻 Developer
+
+* **Name:** Aman Kumar
+* **LinkedIn:** [linkedin.com/in/amank736836](https://www.linkedin.com/in/amank736836)
+* **Portfolio:** [amank736836.vercel.app](https://amank736836.vercel.app)
+* **Feedback:** [chatchamp.vercel.app/u/amank736836](https://chatchamp.vercel.app/u/amank736836)
+
+---
+
+## 📂 Repositories
+
+* **Main Repository:** [github.com/amank736836/MERN-ChatApp](https://github.com/amank736836/MERN-ChatApp)
+* **Frontend:** [github.com/amank736836/MERN-ChatApp-Frontend](https://github.com/amank736836/MERN-ChatApp-Frontend)
+* **Backend:** [github.com/amank736836/MERN-ChatApp-Backend](https://github.com/amank736836/MERN-ChatApp-Backend)
+
+---
+
+## 🚀 Features
+
+* **User Authentication:** Secure login and registration with JWT.
+* **Real-Time Messaging:** Instant communication using Socket.IO.
+* **One-to-One and Group Chats:** Create personal or group conversations.
+* **Typing Indicators:** See when others are typing.
+* **Online Status:** Real-time user presence.
+* **Media Sharing:** Send images and files.
+* **Notifications:** Receive alerts for new messages and friend requests.
+* **AI Integration:** Smart replies using Google Generative AI SDK.
+* **Email Notifications:** Account actions and alerts via Nodemailer.
+* **Responsive Design:** Optimized for both desktop and mobile devices.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer        | Technologies                                                                                                                                         |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Backend**  | Node.js, Express.js, MongoDB (Mongoose), Socket.IO, JWT, bcrypt, Multer, Cloudinary, Nodemailer, Google Gen AI SDK                                   |
-| **Frontend** | React.js (Vite), Redux Toolkit, React Router v7, Material‑UI, @emotion, Framer Motion, react-hot-toast, Socket.IO Client, Axios, Chart.js, moment.js |
+* **Frontend:** React.js, Tailwind CSS, Daisy UI
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB (Mongoose ODM)
+* **Real-Time Communication:** Socket.IO
+* **Authentication & Security:** JWT, bcrypt, express-validator, cookie-parser, CORS
+* **File Storage:** Multer, Cloudinary SDK
+* **Email:** Nodemailer
+* **AI SDK:** `@ai-sdk/google`, `ai`
+* **Dev Tools:** nodemon, morgan, dotenv, uuid, `@faker-js/faker`
 
 ---
 
-## 📦 Installation & Setup
+## 📦 Installation
 
-### 1. Clone Both Repos
+### 1. Clone the Repositories
 
 ```bash
 git clone https://github.com/amank736836/MERN-ChatApp-Backend.git
 git clone https://github.com/amank736836/MERN-ChatApp-Frontend.git
 ```
 
----
+### 2. Install Dependencies
 
-### 2. Backend Setup
+#### Backend
 
 ```bash
 cd MERN-ChatApp-Backend
 npm install
-# Create .env per below
-npm run dev    # development (nodemon)
-# or
-npm start      # production
 ```
 
-#### Backend Environment Variables (`/backend/.env`)
+#### Frontend
 
-```env
-MONGODB_URI=your_mongo_uri
+```bash
+cd ../MERN-ChatApp-Frontend
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file in both the backend and frontend root directories with the necessary environment variables as listed below.
+
+### 4. Start the Applications
+
+#### Backend
+
+```bash
+npm run dev
+```
+
+#### Frontend
+
+```bash
+npm start
+```
+
+---
+
+## 🔧 Environment Variables
+
+### Backend `.env`
+
+```dotenv
+# Server & Database
+MONGODB_URI=your_mongo_connection_string
 PORT=5000
 NODE_ENV=development
 
+# JWT & Cookies
 JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=7d
 JWT_COOKIE_EXPIRES_IN=7
+STEALTHY_NOTE_TOKEN_NAME=token_name
+STEALTHY_NOTE_ADMIN_TOKEN_NAME=admin_token_name
+ADMIN_SECRET_KEY=admin_only_secret
 
-ADMIN_SECRET_KEY=your_admin_key
-
+# Client URLs
 CLIENT_URL=http://localhost:3000
 CLIENT_PRODUCTION_URL=https://chatchamp.vercel.app
 
-NODE_MAILER_EMAIL=you@example.com
-NODE_MAILER_PASSWORD=app_password
+# Email (Nodemailer)
+NODE_MAILER_EMAIL=your_email@example.com
+NODE_MAILER_PASSWORD=your_email_password
 
+# Cloudinary (Media Uploads)
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
+CLOUDINARY_URL=your_cloudinary_url
 
-GOOGLE_GENERATIVE_AI_API_KEY=your_ai_key
+# AI Integration
+GOOGLE_GENERATIVE_AI_API_KEY=your_google_ai_key
 ```
 
 ---
 
-### 3. Frontend Setup
+### Frontend `.env`
 
-```bash
-cd MERN-ChatApp-Frontend
-npm install
-# Create .env.local per below
-npm run dev                  # development
-# or
-npm run build && npm run preview  # production preview
-```
-
-#### Frontend Environment Variables (`/.env.local`)
-
-```env
-VITE_SERVER_URL=http://localhost:5000
-VITE_SOCKET_SERVER_URL=http://localhost:5000
+```dotenv
+REACT_APP_API_URL=http://localhost:5000/api/v1
 ```
 
 ---
 
-## 📖 API & Routes Overview
+## 📖 API Structure
 
-All HTTP endpoints are prefixed with `/api/v1`.
+All API endpoints are prefixed with `/api/v1` to support versioning and maintain backward compatibility.
 
-### Auth 🔑
+### 🔐 Authentication Routes
 
-- `POST   /api/v1/user/new`
-- `POST   /api/v1/user/login`
-- `POST   /api/v1/user/verify`
-- `POST   /api/v1/user/forgotPassword`
-- `POST   /api/v1/user/updatePassword`
+| Method | Endpoint                      | Description                |
+| ------ | ----------------------------- | -------------------------- |
+| POST   | `/api/v1/user/register`       | Register new user          |
+| POST   | `/api/v1/user/login`          | Authenticate & receive JWT |
+| POST   | `/api/v1/user/verify`         | Verify user (email/code)   |
+| POST   | `/api/v1/user/forgotPassword` | Request password reset     |
+| POST   | `/api/v1/user/updatePassword` | Update with new password   |
+| GET    | `/api/v1/user/logout`         | Clear auth cookie          |
 
-### User 👥 (auth required)
+### 👤 User Routes
 
-- `GET    /api/v1/user/me`
-- `GET    /api/v1/user/notifications`
-- `GET    /api/v1/user/search`
-- `GET    /api/v1/user/friends`
-- `PUT    /api/v1/user/sendRequest`
-- `PUT    /api/v1/user/acceptRequest`
-- `POST   /api/v1/user/acceptMessages`
-- `GET    /api/v1/user/logout`
+> All these routes require a valid session (`isAuthenticated` middleware).
 
-### Admin 👑 (auth required)
+| Method | Endpoint                       | Description                             |
+| ------ | ------------------------------ | --------------------------------------- |
+| GET    | `/api/v1/user/me`             | Get current user’s profile              |
+| GET    | `/api/v1/user/notifications`  | Fetch current user’s notifications      |
+| GET    | `/api/v1/user/search`         | Search for other users by name or email |
+| GET    | `/api/v1/user/friends`        | List current user’s friends             |
+| POST   | `/api/v1/user/sendRequest`    | Send a friend request                   |
+| PUT    | `/api/v1/user/acceptRequest`  | Accept a friend request                 |
+| POST   | `/api/v1/user/acceptMessages` | Enable/disable accepting messages       |
 
-- `POST   /api/v1/admin/verify`
-- `GET    /api/v1/admin/logout`
-- `GET    /api/v1/admin/`
-- `GET    /api/v1/admin/stats`
-- `GET    /api/v1/admin/users`
-- `GET    /api/v1/admin/chats`
-- `GET    /api/v1/admin/messages`
+### 💬 Chat Routes
 
-### Chat 💥 (auth required)
+> All chat routes require user authentication (`isAuthenticated` middleware).
 
-- `POST   /api/v1/chat/suggestMessages`
-- `POST   /api/v1/chat/sendMessage`
-- `GET    /api/v1/chat`
-- `GET    /api/v1/chat/group`
-- `POST   /api/v1/chat/group`
-- `PUT    /api/v1/chat/group`
-- `DELETE /api/v1/chat/group`
-- `PUT    /api/v1/chat/removeMember`
-- `POST   /api/v1/chat/message`
-- `GET    /api/v1/chat/message/:chatId`
-- `GET    /api/v1/chat/:chatId`
-- `PUT    /api/v1/chat/:chatId`
-- `DELETE /api/v1/chat/:chatId`
+| Method | Endpoint                       | Description                                            |
+| ------ | ------------------------------ | ------------------------------------------------------ |
+| POST   | `/api/v1/chat/suggestMessages` | Get AI-driven suggestions for the current conversation |
+| POST   | `/api/v1/chat/sendMessage`     | Send a new text message                                |
+| GET    | `/api/v1/chat`                 | Retrieve list of chats the user is a part of           |
+| GET    | `/api/v1/chat/group`           | Retrieve all group chats                               |
+| POST   | `/api/v1/chat/group`           | Create a new group chat                                |
+| PUT    | `/api/v1/chat/group`           | Add members to an existing group chat                  |
+| DELETE | `/api/v1/chat/group`           | Leave a group chat                                     |
+| PUT    | `/api/v1/chat/removeMember`    | Remove a member from a group chat                      |
+| POST   | `/api/v1/chat/message`         | Send attachments (images/files) to a chat              |
+| GET    | `/api/v1/chat/message/:chatId` | Get all messages for a specific chat                   |
+| GET    | `/api/v1/chat/:chatId`         | Get chat details (one-to-one or group)                 |
+| PUT    | `/api/v1/chat/:chatId`         | Rename a group chat                                    |
+| DELETE | `/api/v1/chat/:chatId`         | Delete a chat (one-to-one or group)                    |
 
 ---
 
 ## 🔌 WebSocket Events
 
-| Event               | Description                         |
-| ------------------- | ----------------------------------- |
-| `NEW_MESSAGE`       | Send/receive chat message           |
-| `NEW_MESSAGE_ALERT` | Alert when off‑chat messages arrive |
-| `REFETCH_CHATS`     | Reload chat list                    |
-| `NEW_REQUEST`       | New chat invitation                 |
-| `ALERT`             | System/error alerts                 |
-| `START_TYPING`      | User started typing                 |
-| `STOP_TYPING`       | User stopped typing                 |
-| `CHAT_JOINED`       | User joined a room                  |
-| `CHAT_LEAVED`       | User left a room                    |
-| `ONLINE_USERS`      | Broadcast list of online users      |
+| Event               | Direction         | Description                                                                |
+| ------------------- | ----------------- | -------------------------------------------------------------------------- |
+| `NEW_MESSAGE`       | ↔ client ↔ server | Send or receive a new chat message.                                        |
+| `NEW_MESSAGE_ALERT` | server → client   | Notify client of a message when not in the active chat.                    |
+| `REFETCH_CHATS`     | server → client   | Instruct client to reload the chat list (e.g., after creating a new room). |
+| `NEW_REQUEST`       | server → client   | Alert client of a new chat invitation or system notification.              |
+| `ALERT`             | server → client   | Generic alert channel for system/error notifications.                      |
+| `START_TYPING`      | ↔ client ↔ server | Notify when a user begins typing in a chat room.                           |
+| `STOP_TYPING`       | ↔ client ↔ server | Notify when a user stops typing.                                           |
+| `CHAT_JOINED`       | ↔ client ↔ server | Emitted when a user joins a room; server broadcasts to room members.       |
+| `CHAT_LEAVED`       | ↔ client ↔ server | Emitted when a user leaves a room; server broadcasts to room members.      |
+| `ONLINE_USERS`      | server → client   | Provides the current list of online users in a room or globally.           |
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork the project
+1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/xyz`)
 3. Commit your changes (`git commit -m "Add xyz"`)
 4. Push to your branch (`git push origin feature/xyz`)
-5. Open a Pull Request 📬
+5. Open a Pull Request
 
-Please adhere to existing code conventions and add tests where applicable.
+Please follow existing code style and include tests where applicable.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE). ❤️
+This project is licensed under the [MIT License](LICENSE).
 
-```
-
-```
+---
